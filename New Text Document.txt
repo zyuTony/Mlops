@@ -1,0 +1,28 @@
+# add remote storage for google drive. -f force|-d set default
+dvc remote add -fd remote_storage gdrive://1G_JdnKetQBJ9kGE86hcseLmOEhAmo6Dx   
+
+# Gets the data from remote storage
+dvc pull
+
+# Track the data with dvc; Track the .dvc file with git
+dvc add /data.csv  -> output: data.csv.dvc 
+git add data.csv.dvc
+git commit -m "Data first version"
+
+# Data changed. Commit the change in git and push the new data to remote storage
+dvc add /data.csv  -> output: data.csv.dvc gets edited
+git add data.csv.dvc
+git commit -m "Data second version"
+
+# Revert data to first version
+git checkout HEAD^1 data.csv.dvc
+dvc checkout
+
+# Revert again back to latest version
+git checkout HEAD^1 data.csv.dvc
+dvc checkout
+
+
+git add --- use everytime after making a change to a file
+git status -- check changes of files that has not been added to the stage (a bundle contains everything that need to be committed)
+
