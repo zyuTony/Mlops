@@ -1,4 +1,4 @@
 outs:
-- md5: 3b0bfab28a8101b4e4fdd08025a5c235
-  size: 977501
+- md5: babfeca8af5a0c1da8152a3d9ca67c6a
+  size: 142251
   path: customer_churn.csv
