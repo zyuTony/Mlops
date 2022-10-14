@@ -3,15 +3,16 @@ from pathlib import Path
 from joblib import dump
 import pandas as pd
 from sklearn.metrics import accuracy_score 
-
-
-
-
-
-
- 
+import os
 
 def main():
+  data = pd.read_csv("../data/customer_churn.csv")
+  n = round(len(data)*0.8)
+  if not os.path.exists("../data/train"): os.makedirs("../data/train")
+  if not os.path.exists("../data/val"): os.makedirs("../data/val")
+      
+  data[:n].to_csv("../data/train/train.csv", index = False)
+  data[n:].to_csv("../data/val/val.csv", index = False)
   train = "../data/train/train.csv"
   val = "../data/val/val.csv"
   train = pd.read_csv(train)
